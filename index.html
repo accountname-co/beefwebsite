@@ -16,194 +16,164 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      min-height: 100svh;
+      min-height: 100vh;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       background: radial-gradient(1200px 800px at 30% -10%, #1a1f4e 0%, var(--bg) 60%),
                   radial-gradient(1000px 700px at 110% 10%, #2a1f4e 0%, var(--bg) 50%),
                   var(--bg);
       color: var(--text);
-      display: grid;
-      place-items: center;
-      padding: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
     }
     .card {
-      width: min(920px, 100%);
+      width: 100%;
+      max-width: 640px;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
+      border-radius: 20px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.35);
       overflow: hidden;
     }
     header {
-      padding: 24px 24px 0;
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 20px;
+      padding: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
       align-items: center;
     }
     .photo {
-      aspect-ratio: 1 / 1;
-      width: 100%;
-      border-radius: 18px;
+      flex: 0 0 120px;
+      aspect-ratio: 1/1;
+      border-radius: 16px;
       border: 1px solid rgba(255,255,255,0.12);
       object-fit: cover;
       background: #222538;
+      width: 100%;
     }
     h1 {
       margin: 0;
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.1;
+      font-size: clamp(22px, 5vw, 36px);
+      line-height: 1.2;
     }
     .subtitle {
-      margin: 8px 0 0;
+      margin: 6px 0 0;
+      font-size: clamp(14px, 3.5vw, 18px);
       color: var(--muted);
     }
 
-    /* Stars of David sprinkle (CSS) */
     .sprinkles {
-      position: relative;
-      height: 16px;
-      margin: 20px 24px 8px;
-    }
-    .sprinkles span {
-      position: absolute;
-      font-size: 14px;
+      text-align: center;
+      margin: 12px 0;
+      font-size: 18px;
       color: var(--accent);
     }
-    .sprinkles span:nth-child(1){ left:5%; }
-    .sprinkles span:nth-child(2){ left:20%; }
-    .sprinkles span:nth-child(3){ left:38%; }
-    .sprinkles span:nth-child(4){ left:52%; }
-    .sprinkles span:nth-child(5){ left:67%; }
-    .sprinkles span:nth-child(6){ left:80%; }
-    .sprinkles span:nth-child(7){ left:92%; }
 
-    /* Ticker (RSS-style) */
+    /* Ticker */
     .ticker {
-      position: relative;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
+      padding: 10px;
       border-top: 1px solid rgba(255,255,255,0.08);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       background: rgba(0,0,0,0.25);
       overflow: hidden;
       font-weight: 600;
-      letter-spacing: .3px;
+      font-size: clamp(14px, 3.5vw, 18px);
     }
     .ticker .live {
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 10px;
+      gap: 6px;
+      padding: 4px 10px;
       border-radius: 999px;
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
-      white-space: nowrap;
-      z-index: 2;
+      margin-right: 12px;
+      font-size: 14px;
     }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--hot); box-shadow: 0 0 12px var(--hot); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--hot); box-shadow: 0 0 8px var(--hot); }
 
     .track {
-      position: absolute;
-      left: 0; right: 0; top: 0; bottom: 0;
       display: flex;
-      align-items: center;
-      gap: 40px;
+      gap: 32px;
       white-space: nowrap;
-      will-change: transform;
       animation: slide 18s linear infinite;
-      padding-left: max(40px, 20vw);
     }
     @keyframes slide {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
-    .msg { opacity: .95; }
 
     footer {
-      padding: 18px 24px 28px;
+      padding: 12px 16px 20px;
       color: var(--muted);
       font-size: 14px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
     }
     .btn {
       background: var(--accent);
       color: #222;
       border: none;
-      padding: 10px 14px;
-      border-radius: 12px;
+      padding: 8px 14px;
+      border-radius: 10px;
       font-weight: 700;
       cursor: pointer;
+      font-size: 14px;
     }
     .btn:active { transform: translateY(1px); }
-
-    @media (max-width: 560px){
-      header { grid-template-columns: 1fr; }
-    }
   </style>
 </head>
 <body>
-  <main class="card" role="main" aria-label="Birthday card">
+  <main class="card">
     <header>
-      <!-- Placeholder image: replace src with a real photo when ready -->
-      <img class="photo" src="beef.jpg" alt="Birthday person placeholder" />
+      <img class="photo" src="beef.jpg" alt="Birthday person" />
       <div>
         <h1>Mazel Tov, Beef! 🎂🎉</h1>
         <p class="subtitle">Wishing you simcha, naches, and all the rugelach you can eat!</p>
       </div>
     </header>
 
-    <div class="sprinkles" aria-hidden="true">
-      <span>✡️</span><span>✡️</span><span>✡️</span><span>✡️</span><span>✡️</span><span>✡️</span><span>✡️</span>
-    </div>
+    <div class="sprinkles">✡️ ✡️ ✡️ ✡️ ✡️ ✡️ ✡️</div>
 
-    <!-- Jewish-themed sliding ticker -->
-    <section class="ticker" aria-label="Birthday ticker">
-      <div class="live"><span class="dot" aria-hidden="true"></span><span>LIVE</span></div>
-      <div class="track" aria-hidden="true">
-        <span class="msg">🕎 Wishing you simcha, naches, and blessings galore. 🕎</span>
-        <span class="msg">✡️ HOPE YOU STAY A GOY... OR ELSE... 🎉</span>
-         <span class="msg">✡️ Make a very noy-goy wish or goy 🎂</span>
-          <span class="msg">✡️ Sending many schedlles and gold 🎁</span>
-           <span class="msg">✡️ 27/08/2025 is your birthday incase you forgot (SKULL EMOJI) ✨</span>
-        <!-- duplicate messages for seamless loop -->
-        <span class="msg">🕎 Wishing you simcha, naches, and blessings galore. 🕎</span>
-        <span class="msg">✡️ HOPE YOU STAY A GOY... OR ELSE... 🎉</span>
-         <span class="msg">✡️ Make a very noy-goy wish or goy 🎂</span>
-          <span class="msg">✡️ Sending many schedlles and gold 🎁</span>
-           <span class="msg">✡️ 27/08/2025 is your birthday incase you forgot (SKULL EMOJI) ✨</span>
+    <section class="ticker">
+      <div class="live"><span class="dot"></span><span>LIVE</span></div>
+      <div class="track">
+        <span>🕎 Mazel Tov, Beef — may your year overflow with joy! 🕎</span>
+        <span>🎉 L’chaim to another year of simcha and naches! 🎉</span>
+        <span>🎂 Wishing you sweet blessings, like honey cake & rugelach. 🎂</span>
+        <span>✡️ May your life shine bright like the menorah. ✡️</span>
+        <!-- repeated for looping -->
+        <span>🕎 Mazel Tov, Beef — may your year overflow with joy! 🕎</span>
+        <span>🎉 L’chaim to another year of simcha and naches! 🎉</span>
       </div>
     </section>
 
     <footer>
-      <small>Happy Birthday bro, 27/08/2025</small>
-      <button class="btn" onclick="toggleTicker()">Pause / Play Ticker</button>
+      <small>Happy Birthday • 27/08/2025</small>
+      <button class="btn" onclick="toggleTicker()">Pause / Play</button>
     </footer>
   </main>
 
   <script>
-    // Simple pause/play for the ticker
     const track = document.querySelector('.track');
     let paused = false;
     function toggleTicker(){
       paused = !paused;
       track.style.animationPlayState = paused ? 'paused' : 'running';
     }
-
-    // Reduce motion preference
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const applyMotionPref = () => {
+    media.addEventListener('change', () => {
       track.style.animationDuration = media.matches ? '0.001s' : '18s';
-    };
-    media.addEventListener('change', applyMotionPref);
-    applyMotionPref();
+    });
+    track.style.animationDuration = media.matches ? '0.001s' : '18s';
   </script>
 </body>
 </html>
